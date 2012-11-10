@@ -1,0 +1,318 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		4CCD4D9E164EFE2700891921 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CCD4D9D164EFE2700891921 /* UIKit.framework */; };
+		4CCD4DA0164EFE2700891921 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CCD4D9F164EFE2700891921 /* Foundation.framework */; };
+		4CCD4DA2164EFE2700891921 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CCD4DA1164EFE2700891921 /* CoreGraphics.framework */; };
+		4CCD4DA8164EFE2700891921 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD4DA6164EFE2700891921 /* InfoPlist.strings */; };
+		4CCD4DAA164EFE2700891921 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD4DA9164EFE2700891921 /* main.m */; };
+		4CCD4DAE164EFE2700891921 /* MessagerAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD4DAD164EFE2700891921 /* MessagerAppDelegate.m */; };
+		4CCD4DB0164EFE2700891921 /* Default.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD4DAF164EFE2700891921 /* Default.png */; };
+		4CCD4DB2164EFE2700891921 /* Default@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD4DB1164EFE2700891921 /* Default@2x.png */; };
+		4CCD4DB4164EFE2700891921 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD4DB3164EFE2700891921 /* Default-568h@2x.png */; };
+		4CCD4DB7164EFE2700891921 /* MainStoryboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 4CCD4DB5164EFE2700891921 /* MainStoryboard.storyboard */; };
+		4CCD4DBA164EFE2700891921 /* MessagerMasterViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD4DB9164EFE2700891921 /* MessagerMasterViewController.m */; };
+		4CCD4DBD164EFE2700891921 /* MessagerDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD4DBC164EFE2700891921 /* MessagerDetailViewController.m */; };
+		4CCD4DC9164EFF1400891921 /* Message.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD4DC8164EFF1400891921 /* Message.m */; };
+		4CCD4DCC164F002100891921 /* MessageSingleton.m in Sources */ = {isa = PBXBuildFile; fileRef = 4CCD4DCB164F002100891921 /* MessageSingleton.m */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		4CCD4D99164EFE2700891921 /* Messager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messager.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		4CCD4D9D164EFE2700891921 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		4CCD4D9F164EFE2700891921 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		4CCD4DA1164EFE2700891921 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		4CCD4DA5164EFE2700891921 /* Messager-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Messager-Info.plist"; sourceTree = "<group>"; };
+		4CCD4DA7164EFE2700891921 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		4CCD4DA9164EFE2700891921 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		4CCD4DAB164EFE2700891921 /* Messager-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "Messager-Prefix.pch"; sourceTree = "<group>"; };
+		4CCD4DAC164EFE2700891921 /* MessagerAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessagerAppDelegate.h; sourceTree = "<group>"; };
+		4CCD4DAD164EFE2700891921 /* MessagerAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessagerAppDelegate.m; sourceTree = "<group>"; };
+		4CCD4DAF164EFE2700891921 /* Default.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = Default.png; sourceTree = "<group>"; };
+		4CCD4DB1164EFE2700891921 /* Default@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default@2x.png"; sourceTree = "<group>"; };
+		4CCD4DB3164EFE2700891921 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		4CCD4DB6164EFE2700891921 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/MainStoryboard.storyboard; sourceTree = "<group>"; };
+		4CCD4DB8164EFE2700891921 /* MessagerMasterViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessagerMasterViewController.h; sourceTree = "<group>"; };
+		4CCD4DB9164EFE2700891921 /* MessagerMasterViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessagerMasterViewController.m; sourceTree = "<group>"; };
+		4CCD4DBB164EFE2700891921 /* MessagerDetailViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MessagerDetailViewController.h; sourceTree = "<group>"; };
+		4CCD4DBC164EFE2700891921 /* MessagerDetailViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MessagerDetailViewController.m; sourceTree = "<group>"; };
+		4CCD4DC7164EFF1400891921 /* Message.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Message.h; sourceTree = "<group>"; };
+		4CCD4DC8164EFF1400891921 /* Message.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Message.m; sourceTree = "<group>"; };
+		4CCD4DCA164F002100891921 /* MessageSingleton.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MessageSingleton.h; sourceTree = "<group>"; };
+		4CCD4DCB164F002100891921 /* MessageSingleton.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MessageSingleton.m; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		4CCD4D96164EFE2700891921 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CCD4D9E164EFE2700891921 /* UIKit.framework in Frameworks */,
+				4CCD4DA0164EFE2700891921 /* Foundation.framework in Frameworks */,
+				4CCD4DA2164EFE2700891921 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		4CCD4D8E164EFE2700891921 = {
+			isa = PBXGroup;
+			children = (
+				4CCD4DA3164EFE2700891921 /* Messager */,
+				4CCD4D9C164EFE2700891921 /* Frameworks */,
+				4CCD4D9A164EFE2700891921 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		4CCD4D9A164EFE2700891921 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				4CCD4D99164EFE2700891921 /* Messager.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		4CCD4D9C164EFE2700891921 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				4CCD4D9D164EFE2700891921 /* UIKit.framework */,
+				4CCD4D9F164EFE2700891921 /* Foundation.framework */,
+				4CCD4DA1164EFE2700891921 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		4CCD4DA3164EFE2700891921 /* Messager */ = {
+			isa = PBXGroup;
+			children = (
+				4CCD4DAC164EFE2700891921 /* MessagerAppDelegate.h */,
+				4CCD4DAD164EFE2700891921 /* MessagerAppDelegate.m */,
+				4CCD4DB5164EFE2700891921 /* MainStoryboard.storyboard */,
+				4CCD4DB8164EFE2700891921 /* MessagerMasterViewController.h */,
+				4CCD4DB9164EFE2700891921 /* MessagerMasterViewController.m */,
+				4CCD4DBB164EFE2700891921 /* MessagerDetailViewController.h */,
+				4CCD4DBC164EFE2700891921 /* MessagerDetailViewController.m */,
+				4CCD4DC7164EFF1400891921 /* Message.h */,
+				4CCD4DC8164EFF1400891921 /* Message.m */,
+				4CCD4DCA164F002100891921 /* MessageSingleton.h */,
+				4CCD4DCB164F002100891921 /* MessageSingleton.m */,
+				4CCD4DA4164EFE2700891921 /* Supporting Files */,
+			);
+			path = Messager;
+			sourceTree = "<group>";
+		};
+		4CCD4DA4164EFE2700891921 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				4CCD4DA5164EFE2700891921 /* Messager-Info.plist */,
+				4CCD4DA6164EFE2700891921 /* InfoPlist.strings */,
+				4CCD4DA9164EFE2700891921 /* main.m */,
+				4CCD4DAB164EFE2700891921 /* Messager-Prefix.pch */,
+				4CCD4DAF164EFE2700891921 /* Default.png */,
+				4CCD4DB1164EFE2700891921 /* Default@2x.png */,
+				4CCD4DB3164EFE2700891921 /* Default-568h@2x.png */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		4CCD4D98164EFE2700891921 /* Messager */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 4CCD4DC0164EFE2700891921 /* Build configuration list for PBXNativeTarget "Messager" */;
+			buildPhases = (
+				4CCD4D95164EFE2700891921 /* Sources */,
+				4CCD4D96164EFE2700891921 /* Frameworks */,
+				4CCD4D97164EFE2700891921 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Messager;
+			productName = Messager;
+			productReference = 4CCD4D99164EFE2700891921 /* Messager.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		4CCD4D90164EFE2700891921 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				CLASSPREFIX = Messager;
+				LastUpgradeCheck = 0450;
+				ORGANIZATIONNAME = "Nathan Fraenkel";
+			};
+			buildConfigurationList = 4CCD4D93164EFE2700891921 /* Build configuration list for PBXProject "Messager" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 4CCD4D8E164EFE2700891921;
+			productRefGroup = 4CCD4D9A164EFE2700891921 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				4CCD4D98164EFE2700891921 /* Messager */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		4CCD4D97164EFE2700891921 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CCD4DA8164EFE2700891921 /* InfoPlist.strings in Resources */,
+				4CCD4DB0164EFE2700891921 /* Default.png in Resources */,
+				4CCD4DB2164EFE2700891921 /* Default@2x.png in Resources */,
+				4CCD4DB4164EFE2700891921 /* Default-568h@2x.png in Resources */,
+				4CCD4DB7164EFE2700891921 /* MainStoryboard.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		4CCD4D95164EFE2700891921 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				4CCD4DAA164EFE2700891921 /* main.m in Sources */,
+				4CCD4DAE164EFE2700891921 /* MessagerAppDelegate.m in Sources */,
+				4CCD4DBA164EFE2700891921 /* MessagerMasterViewController.m in Sources */,
+				4CCD4DBD164EFE2700891921 /* MessagerDetailViewController.m in Sources */,
+				4CCD4DC9164EFF1400891921 /* Message.m in Sources */,
+				4CCD4DCC164F002100891921 /* MessageSingleton.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		4CCD4DA6164EFE2700891921 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CCD4DA7164EFE2700891921 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		4CCD4DB5164EFE2700891921 /* MainStoryboard.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				4CCD4DB6164EFE2700891921 /* en */,
+			);
+			name = MainStoryboard.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		4CCD4DBE164EFE2700891921 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		4CCD4DBF164EFE2700891921 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		4CCD4DC1164EFE2700891921 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Messager/Messager-Prefix.pch";
+				INFOPLIST_FILE = "Messager/Messager-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		4CCD4DC2164EFE2700891921 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "Messager/Messager-Prefix.pch";
+				INFOPLIST_FILE = "Messager/Messager-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		4CCD4D93164EFE2700891921 /* Build configuration list for PBXProject "Messager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CCD4DBE164EFE2700891921 /* Debug */,
+				4CCD4DBF164EFE2700891921 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		4CCD4DC0164EFE2700891921 /* Build configuration list for PBXNativeTarget "Messager" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				4CCD4DC1164EFE2700891921 /* Debug */,
+				4CCD4DC2164EFE2700891921 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 4CCD4D90164EFE2700891921 /* Project object */;
+}
