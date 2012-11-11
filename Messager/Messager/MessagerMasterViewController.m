@@ -29,13 +29,21 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
-    self.navigationItem.leftBarButtonItem = self.editButtonItem;
+    UIBarButtonItem *refresher = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshButtonPressed:)];
+    
+    
+    self.navigationItem.leftBarButtonItem = refresher;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(insertNewObject:)];
+    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
     self.navigationItem.rightBarButtonItem = addButton;
     
-    // initialize singleton!
     singletonian = [MessageSingleton sharedDataModel];
+    
+    if (!self.messages){
+        self.messages = [[NSMutableArray alloc] init];
+    }
+    
+    [self getMessagesFromAPI];
 }
 
 - (void)didReceiveMemoryWarning
@@ -44,7 +52,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)insertNewObject:(id)sender
+- (void)addButtonPressed:(id)sender
 {
     if (!messages) {
         messages = [[NSMutableArray alloc] init];
@@ -52,6 +60,11 @@
     [messages insertObject:[NSDate date] atIndex:0];
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
     [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
+}
+
+- (void)refreshButtonPressed:(id)sender
+{
+    [self getMessagesFromAPI];
 }
 
 #pragma mark - Table View
@@ -70,8 +83,9 @@
 {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"Cell" forIndexPath:indexPath];
 
-    NSDate *object = messages[indexPath.row];
-    cell.textLabel.text = [object description];
+    Message *msg = messages[indexPath.row];
+    cell.textLabel.text = [msg title];
+    cell.detailTextLabel.text = [msg body];
     return cell;
 }
 
@@ -111,9 +125,37 @@
 {
     if ([[segue identifier] isEqualToString:@"showMessage"]) {
         NSIndexPath *indexPath = [self.tableView indexPathForSelectedRow];
-        NSDate *object = messages[indexPath.row];
+        Message *object = messages[indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
+}
+
+-(void)getMessagesFromAPI {
+    
+    NSString *url = @"http://cis195-messages.herokuapp.com/messages";
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    [request setHTTPMethod:@"GET"];
+    
+    NSLog(@"setHTTPMethod: GET!");
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [connection start];
+    
+    NSLog(@"connection started");
+}
+
+- (void)postMessageToAPI:(NSString *)title andBody:(NSString *)body {
+    NSString *url = @"http://cis195-messages.herokuapp.com/messages";
+    NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
+    
+    [request setHTTPMethod:@"POST"];
+    
+    NSString *data = [NSString stringWithFormat:@"message[title]=%@&message[body]=%@", title, body];
+    [request setHTTPBody:[data dataUsingEncoding:NSUTF8StringEncoding]];
+    
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
+    [connection start];
 }
 
 
@@ -128,25 +170,34 @@
  */
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
+    NSLog(@"conection did receive response!");
     _data = [[NSMutableData alloc] init];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveData:(NSData *)data {
+    NSLog(@"conection did receive data!");
     [_data appendData:data];
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     // Please do something sensible here, like log the error.
+    NSLog(@"connection failed with error: %@", error.description);
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
-    NSDictionary *dictResponse = [NSJSONSerialization JSONObjectWithData:_data options:0 error:nil];
-    messages = [[dictResponse objectForKey:@"response"] objectForKey:@"venues"];
+    NSLog(@"connectiondidfinishloading!");
+    NSMutableArray *dictResponse = [NSJSONSerialization JSONObjectWithData:_data options:0 error:nil];
+    for (int i = 0; i < dictResponse.count; i++){
+        NSDictionary *thing = [dictResponse objectAtIndex:i];
+        NSLog(@"thing: %@", [thing objectForKey:@"title"]);
+        Message* msg = [[Message alloc] initWithTitle:[thing objectForKey:@"title"] createdAt:[thing objectForKey:@"createdAt"] updatedAt:[thing objectForKey:@"updatedAt"] body:[thing objectForKey:@"body"]];
+        msg.idNumber = [[thing objectForKey:@"id"] intValue];
+        [self.messages insertObject:msg atIndex:i];
+    }
     // update singleton
     singletonian.messages = messages;
-    // update tableview
     [self.tableView reloadData];
-    NSLog(@"%@", dictResponse); // If you want to see what the 4SQ response looks like.
+//    NSLog(@"%@", dictResponse); // If you want to see what the 4SQ response looks like.
 }
 
 @end

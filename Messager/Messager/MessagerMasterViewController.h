@@ -12,7 +12,7 @@
 
 @interface MessagerMasterViewController : UITableViewController <NSURLConnectionDataDelegate>
 
-@property (nonatomic, copy) NSMutableArray *messages;
+@property (nonatomic, retain) NSMutableArray *messages;
 
 @property (retain) MessageSingleton *singletonian;
 

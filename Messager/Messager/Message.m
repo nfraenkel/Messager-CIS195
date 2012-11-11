@@ -12,13 +12,14 @@
 
 @synthesize idNumber, title, body, createdAt, updatedAt;
 
--(id)initWithName:(NSString *)newTitle createdAt:(NSDate *)newCreatedAt updatedAt:(NSDate *)newUpdatedAt body:(NSString *)newBody{
+-(id)initWithTitle:(NSString *)newTitle createdAt:(NSDate *)newCreatedAt updatedAt:(NSDate *)newUpdatedAt body:(NSString *)newBody{
     self = [super init];
     if (self) {
         self.title = newTitle;
         self.body = newBody;
         self.createdAt = newCreatedAt;
         self.updatedAt = newUpdatedAt;
+        return self;
     }
 
     return nil;

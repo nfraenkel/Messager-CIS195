@@ -16,7 +16,7 @@
 @property (nonatomic, retain) IBOutlet NSDate *createdAt;
 @property (nonatomic, retain) IBOutlet NSDate *updatedAt;
 
--(id)initWithName:(NSString *)newTitle createdAt:(NSDate *)newCreatedAt updatedAt:(NSDate *)newUpdatedAt body:(NSString *)newBody;
+-(id)initWithTitle:(NSString *)newTitle createdAt:(NSDate *)newCreatedAt updatedAt:(NSDate *)newUpdatedAt body:(NSString *)newBody;
 
 
 @end

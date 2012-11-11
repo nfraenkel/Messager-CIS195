@@ -16,10 +16,11 @@
 
 #pragma mark - Managing the detail item
 
-- (void)setDetailItem:(id)newDetailItem
+- (void)setDetailItem:(Message *)newMessage
 {
-    if (_detailItem != newDetailItem) {
-        _detailItem = newDetailItem;
+    if (_detailItem != newMessage) {
+        _detailItem = newMessage;
+
         
         // Update the view.
         [self configureView];
@@ -31,7 +32,15 @@
     // Update the user interface for the detail item.
 
     if (self.detailItem) {
-        self.detailDescriptionLabel.text = [self.detailItem description];
+        NSDateFormatter *formy = [[NSDateFormatter alloc] init];
+        [formy setDateStyle:NSDateFormatterMediumStyle];
+        NSString *created = [formy stringFromDate:_detailItem.createdAt];
+        NSString *updated = [formy stringFromDate:_detailItem.updatedAt];
+        self.titleLabel.text = _detailItem.title;
+        self.bodyLabel.text = _detailItem.body;
+        self.createdLabel.text = created;
+        self.updatedLabel.text = updated;
+                
     }
 }
 
