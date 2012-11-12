@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4C06B83E165182C9007CFB96 /* NewMessageViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 4C06B83D165182C9007CFB96 /* NewMessageViewController.m */; };
 		4CCD4D9E164EFE2700891921 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CCD4D9D164EFE2700891921 /* UIKit.framework */; };
 		4CCD4DA0164EFE2700891921 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CCD4D9F164EFE2700891921 /* Foundation.framework */; };
 		4CCD4DA2164EFE2700891921 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 4CCD4DA1164EFE2700891921 /* CoreGraphics.framework */; };
@@ -24,6 +25,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4C06B83C165182C9007CFB96 /* NewMessageViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewMessageViewController.h; sourceTree = "<group>"; };
+		4C06B83D165182C9007CFB96 /* NewMessageViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewMessageViewController.m; sourceTree = "<group>"; };
 		4CCD4D99164EFE2700891921 /* Messager.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Messager.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4CCD4D9D164EFE2700891921 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		4CCD4D9F164EFE2700891921 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -103,6 +106,8 @@
 				4CCD4DC8164EFF1400891921 /* Message.m */,
 				4CCD4DCA164F002100891921 /* MessageSingleton.h */,
 				4CCD4DCB164F002100891921 /* MessageSingleton.m */,
+				4C06B83C165182C9007CFB96 /* NewMessageViewController.h */,
+				4C06B83D165182C9007CFB96 /* NewMessageViewController.m */,
 				4CCD4DA4164EFE2700891921 /* Supporting Files */,
 			);
 			path = Messager;
@@ -195,6 +200,7 @@
 				4CCD4DBD164EFE2700891921 /* MessagerDetailViewController.m in Sources */,
 				4CCD4DC9164EFF1400891921 /* Message.m in Sources */,
 				4CCD4DCC164F002100891921 /* MessageSingleton.m in Sources */,
+				4C06B83E165182C9007CFB96 /* NewMessageViewController.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -311,6 +317,7 @@
 				4CCD4DC2164EFE2700891921 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

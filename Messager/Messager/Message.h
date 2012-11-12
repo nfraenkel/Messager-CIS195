@@ -13,10 +13,10 @@
 @property (nonatomic) int idNumber;
 @property (nonatomic, retain) IBOutlet NSString *title;
 @property (nonatomic, retain) IBOutlet NSString *body;
-@property (nonatomic, retain) IBOutlet NSDate *createdAt;
-@property (nonatomic, retain) IBOutlet NSDate *updatedAt;
+@property (nonatomic, retain) IBOutlet NSString *createdAt;
+@property (nonatomic, retain) IBOutlet NSString *updatedAt;
 
--(id)initWithTitle:(NSString *)newTitle createdAt:(NSDate *)newCreatedAt updatedAt:(NSDate *)newUpdatedAt body:(NSString *)newBody;
+-(id)initWithTitle:(NSString *)newTitle createdAt:(NSString *)newCreatedAt updatedAt:(NSString *)newUpdatedAt body:(NSString *)newBody;
 
 
 @end

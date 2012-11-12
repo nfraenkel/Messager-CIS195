@@ -19,6 +19,7 @@
 @implementation MessagerMasterViewController
 
 @synthesize messages, singletonian;
+@synthesize postViewController;
 
 - (void)awakeFromNib
 {
@@ -34,9 +35,6 @@
     
     self.navigationItem.leftBarButtonItem = refresher;
 
-    UIBarButtonItem *addButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonPressed:)];
-    self.navigationItem.rightBarButtonItem = addButton;
-    
     singletonian = [MessageSingleton sharedDataModel];
     
     if (!self.messages){
@@ -52,15 +50,6 @@
     // Dispose of any resources that can be recreated.
 }
 
-- (void)addButtonPressed:(id)sender
-{
-    if (!messages) {
-        messages = [[NSMutableArray alloc] init];
-    }
-    [messages insertObject:[NSDate date] atIndex:0];
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:0 inSection:0];
-    [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationAutomatic];
-}
 
 - (void)refreshButtonPressed:(id)sender
 {
@@ -128,6 +117,12 @@
         Message *object = messages[indexPath.row];
         [[segue destinationViewController] setDetailItem:object];
     }
+    else if ([segue.identifier isEqualToString:@"createMessage"])
+	{
+		UINavigationController *navigationController = segue.destinationViewController;
+		NewMessageViewController *messageVC = [[navigationController viewControllers] objectAtIndex:0];
+		messageVC.delegate = self;
+	}
 }
 
 -(void)getMessagesFromAPI {
@@ -182,6 +177,24 @@
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     // Please do something sensible here, like log the error.
     NSLog(@"connection failed with error: %@", error.description);
+    
+    UIAlertView *alert = [[UIAlertView alloc]
+                          initWithTitle: @"Error with GET"
+                          message: @"There was an error when trying to get the messages from the CIS195 message board."
+                          delegate: nil
+                          cancelButtonTitle:@"OK BYE"
+                          otherButtonTitles:@"Retry", nil];
+    [alert show];
+}
+
+-(void) alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (buttonIndex == 0) {
+		NSLog(@"newmessageviewcontroller user pressed OK BYE");
+	}
+	else {
+		NSLog(@"newmessageviewcontroller user pressed Retry");
+        [self getMessagesFromAPI];
+	}
 }
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
@@ -190,14 +203,31 @@
     for (int i = 0; i < dictResponse.count; i++){
         NSDictionary *thing = [dictResponse objectAtIndex:i];
         NSLog(@"thing: %@", [thing objectForKey:@"title"]);
-        Message* msg = [[Message alloc] initWithTitle:[thing objectForKey:@"title"] createdAt:[thing objectForKey:@"createdAt"] updatedAt:[thing objectForKey:@"updatedAt"] body:[thing objectForKey:@"body"]];
+        Message* msg = [[Message alloc] initWithTitle:[thing objectForKey:@"title"] createdAt:[thing objectForKey:@"created_at"] updatedAt:[thing objectForKey:@"updated_at"] body:[thing objectForKey:@"body"]];
         msg.idNumber = [[thing objectForKey:@"id"] intValue];
+        NSLog(@"message %d: (%@, %@, %@, %@, %d)", i, msg.title, msg.body, msg.updatedAt, msg.createdAt, msg.idNumber);
         [self.messages insertObject:msg atIndex:i];
     }
     // update singleton
     singletonian.messages = messages;
     [self.tableView reloadData];
 //    NSLog(@"%@", dictResponse); // If you want to see what the 4SQ response looks like.
+}
+
+#pragma mark - NewMessageViewControllerDelegate
+
+- (void)newMessageViewControllerDidCancel:(NewMessageViewController *)controller {
+	
+    NSLog(@"CANCEL");
+    
+    [self dismissViewControllerAnimated:YES completion:nil];
+}
+
+- (void)newMessageViewControllerDidSave:(NewMessageViewController *)controller {
+	
+    [self dismissViewControllerAnimated:YES completion:nil];
+    
+    [self getMessagesFromAPI];
 }
 
 @end

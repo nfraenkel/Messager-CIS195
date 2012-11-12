@@ -9,11 +9,14 @@
 #import <UIKit/UIKit.h>
 #import "Message.h"
 #import "MessageSingleton.h"
+#import "NewMessageViewController.h"
 
-@interface MessagerMasterViewController : UITableViewController <NSURLConnectionDataDelegate>
+@interface MessagerMasterViewController : UITableViewController <NSURLConnectionDataDelegate, NewMessageViewControllerDelegate, UIAlertViewDelegate>
 
 @property (nonatomic, retain) NSMutableArray *messages;
 
 @property (retain) MessageSingleton *singletonian;
+
+@property (nonatomic, retain) IBOutlet UIViewController *postViewController;
 
 @end
