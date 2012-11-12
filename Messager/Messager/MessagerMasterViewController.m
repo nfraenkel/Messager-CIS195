@@ -30,6 +30,7 @@
 {
     [super viewDidLoad];
 	// Do any additional setup after loading the view, typically from a nib.
+        
     UIBarButtonItem *refresher = [[UIBarButtonItem alloc] initWithTitle:@"Refresh" style:UIBarButtonItemStyleBordered target:self action:@selector(refreshButtonPressed:)];
     
     
@@ -127,6 +128,8 @@
 
 -(void)getMessagesFromAPI {
     
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
     NSString *url = @"http://cis195-messages.herokuapp.com/messages";
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
@@ -178,10 +181,12 @@
     // Please do something sensible here, like log the error.
     NSLog(@"connection failed with error: %@", error.description);
     
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle: @"Error with GET"
                           message: @"There was an error when trying to get the messages from the CIS195 message board."
-                          delegate: nil
+                          delegate: self
                           cancelButtonTitle:@"OK BYE"
                           otherButtonTitles:@"Retry", nil];
     [alert show];
@@ -202,24 +207,22 @@
     NSMutableArray *dictResponse = [NSJSONSerialization JSONObjectWithData:_data options:0 error:nil];
     for (int i = 0; i < dictResponse.count; i++){
         NSDictionary *thing = [dictResponse objectAtIndex:i];
-        NSLog(@"thing: %@", [thing objectForKey:@"title"]);
         Message* msg = [[Message alloc] initWithTitle:[thing objectForKey:@"title"] createdAt:[thing objectForKey:@"created_at"] updatedAt:[thing objectForKey:@"updated_at"] body:[thing objectForKey:@"body"]];
         msg.idNumber = [[thing objectForKey:@"id"] intValue];
-        NSLog(@"message %d: (%@, %@, %@, %@, %d)", i, msg.title, msg.body, msg.updatedAt, msg.createdAt, msg.idNumber);
         [self.messages insertObject:msg atIndex:i];
     }
     // update singleton
     singletonian.messages = messages;
     [self.tableView reloadData];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 //    NSLog(@"%@", dictResponse); // If you want to see what the 4SQ response looks like.
 }
 
 #pragma mark - NewMessageViewControllerDelegate
 
 - (void)newMessageViewControllerDidCancel:(NewMessageViewController *)controller {
-	
-    NSLog(@"CANCEL");
-    
+	    
     [self dismissViewControllerAnimated:YES completion:nil];
 }
 

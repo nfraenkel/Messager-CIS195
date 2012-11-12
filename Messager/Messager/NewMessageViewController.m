@@ -38,6 +38,9 @@
 }
 
 - (void)submitMessagePost {
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+    
     NSString *url = @"http://cis195-messages.herokuapp.com/messages";
     NSMutableURLRequest *request = [NSMutableURLRequest requestWithURL:[NSURL URLWithString:url]];
     
@@ -51,12 +54,14 @@
 }
 
 - (void)connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
     NSLog(@"Error with POST request: %@", error.description);
     
     UIAlertView *alert = [[UIAlertView alloc]
                           initWithTitle: @"Error with POST"
                           message: @"There was an error when trying to post your new message to the CIS195 message board."
-                          delegate: nil
+                          delegate: self
                           cancelButtonTitle:@"Whatever"
                           otherButtonTitles:@"Retry", nil];
     [alert show];
@@ -74,8 +79,21 @@
 
 -(void)connectionDidFinishLoading:(NSURLConnection *)connection {
    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+    
     [self.delegate newMessageViewControllerDidSave:self];
 
+}
+
+-(void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    UITouch *touch = [touches anyObject];
+    if (touch.view != bodyTextView) {
+        NSLog(@"YES!!!!!");
+        [bodyTextView resignFirstResponder];
+    }
+    else if (touch.view != titleField){
+        [titleField resignFirstResponder];
+    }
 }
 
 - (IBAction)cancelButtonPressed:(id)sender
